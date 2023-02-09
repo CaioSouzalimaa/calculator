@@ -19,38 +19,68 @@
         <div id="last-calc">1 + 1</div>
         <div id="result">
             <img src="./assets/equals.svg" alt="sinal de igual">
-            <span>2</span>
+            <span id="current">2</span>
         </div>
     </div>
     <div>
         <div id="keyboard">
-            <button class="secondary">CE</button>
-            <button>C</button>
+            <button onclick="clean()" class="secondary">C</button>
             <button>%</button>
-            <button class="tertiary"><img src="./assets/divide.svg"></button>
+            <button onclick="back()"><</button>
+            <button onclick="insert('/')" class="tertiary"><img src="./assets/divide.svg"></button>
 
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="tertiary"><img src="./assets/x.svg"></button>
+            <button onclick="insert('1')">1</button>
+            <button onclick="insert('2')">2</button>
+            <button onclick="insert('3')">3</button>
+            <button onclick="insert('*')" class="tertiary"><img src="./assets/x.svg"></button>
 
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button class="tertiary"><img src="./assets/minus.svg"></button>
+            <button onclick="insert('4')">4</button>
+            <button onclick="insert('5')">5</button>
+            <button onclick="insert('6')">6</button>
+            <button onclick="insert('-')" class="tertiary"><img src="./assets/minus.svg"></button>
 
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button class="tertiary"><img src="./assets/plus.svg"></button>
+            <button onclick="insert('7')">7</button>
+            <button onclick="insert('8')">8</button>
+            <button onclick="insert('9')">9</button>
+            <button onclick="insert('+')" class="tertiary"><img src="./assets/plus.svg"></button>
 
-            <button >+/-</button>
-            <button>0</button>
-            <button>,</button>
-            <button class="quartiary"><img src="./assets/result.svg"></button>
+            <button onclick="positiveOrNegative()">+/-</button>
+            <button onclick="insert('0')">0</button>
+            <button onclick="insert(',')">,</button>
+            <button onclick="result()" class="quartiary"><img src="./assets/result.svg"></button>
 
         </div>
     </div>
 </div>
+
+<script>
+    function insert(value) {
+        const number = document.getElementById('current').innerHTML;
+        document.getElementById('current').innerHTML = number + value;
+    }
+
+    function clean() {
+        document.getElementById('current').innerHTML = '';
+    }
+
+    function back() {
+        const number = document.getElementById('current').innerHTML;
+        document.getElementById('current').innerHTML = number.substring(0, number.length - 1);
+    }
+    function result(){
+        const result = document.getElementById('current').innerHTML;
+        if(result){
+            document.getElementById('current').innerHTML = eval(result)
+        }
+    }
+    function positiveOrNegative(){
+        const number = document.getElementById('current').innerHTML;
+        if(number > 0){
+            document.getElementById('current').innerHTML = number * -1;
+        }else{
+            document.getElementById('current').innerHTML = number * -1;
+        }
+    }
+</script>
 </body>
 </html>
