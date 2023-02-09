@@ -9,24 +9,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calculadora</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
 <div id="calculator">
 
     <div id="display">
-        <div id="last-calc">1 + 1</div>
+        <div id="last-calc">0</div>
         <div id="result">
             <img src="./assets/equals.svg" alt="sinal de igual">
-            <span id="current">2</span>
+            <span id="result-calc">0</span>
         </div>
     </div>
     <div>
         <div id="keyboard">
-            <button onclick="clean()" class="secondary">C</button>
+            <button onclick="cancelEntry()" class="secondary">CE</button>
+            <button onclick="clean()">C</button>
             <button>%</button>
-            <button onclick="back()"><</button>
             <button onclick="insert('/')" class="tertiary"><img src="./assets/divide.svg"></button>
 
             <button onclick="insert('1')">1</button>
@@ -47,40 +47,12 @@
             <button onclick="positiveOrNegative()">+/-</button>
             <button onclick="insert('0')">0</button>
             <button onclick="insert(',')">,</button>
-            <button onclick="result()" class="quartiary"><img src="./assets/result.svg"></button>
+            <button onclick="calculate()" class="quartiary"><img src="./assets/result.svg"></button>
 
         </div>
     </div>
 </div>
 
-<script>
-    function insert(value) {
-        const number = document.getElementById('current').innerHTML;
-        document.getElementById('current').innerHTML = number + value;
-    }
-
-    function clean() {
-        document.getElementById('current').innerHTML = '';
-    }
-
-    function back() {
-        const number = document.getElementById('current').innerHTML;
-        document.getElementById('current').innerHTML = number.substring(0, number.length - 1);
-    }
-    function result(){
-        const result = document.getElementById('current').innerHTML;
-        if(result){
-            document.getElementById('current').innerHTML = eval(result)
-        }
-    }
-    function positiveOrNegative(){
-        const number = document.getElementById('current').innerHTML;
-        if(number > 0){
-            document.getElementById('current').innerHTML = number * -1;
-        }else{
-            document.getElementById('current').innerHTML = number * -1;
-        }
-    }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
